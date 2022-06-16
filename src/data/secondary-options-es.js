@@ -48,12 +48,14 @@ export const secondaryOptions = {
 
   ],
 
-  ordenar: [
+  filtrar: [
     {
-      value: 'fecha',
-      label: 'Por fecha',
-      usage: "sort_by: 'published_at','asc'",
-      nb: 'Ordenar por fecha'
+      value: 'entry',
+      label: 'entrada',
+    },
+    {
+      value: 'array',
+      label: 'array',
     }
 
   ]

@@ -1,16 +1,16 @@
 export const tertiaryOptions = {
 
-  'fecha-in-iso': [
+  entry: [
     {
-      value: 'year-iso',
-      label: 'año',
-      usage: 'año'
+      value: 'date',
+      label: 'Fecha (Año, mes, dia)',
+      usage: "entry | date: '%y, %m, %d'"
     },
     {
-      value: 'month-iso',
-      label: 'mes',
-      usage: 'mes',
-      nb: 'esto es una mes'
+      value: 'date-plane',
+      label: 'Fecha plana',
+      usage: "entry | date: '%s'",
+      nb: 'this a year-month'
     }
   ],
 

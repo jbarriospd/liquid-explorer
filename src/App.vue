@@ -57,23 +57,24 @@
           </div>
 
           <div class="col-md-7 offset-md-1">
-            <p class="h5 mb-2">Usage</p>
-            
+            <p class="h5 mb-2">Snippet</p>
+           
+
             <div class="d-flex justify-content-between snippet-code snippet-1 mb-5">
               <pre class="d-flex text-wrap m-0">
-                <vue-typer :text="usage" :repeat='0'/>
+                 <Typist :words="usage"/>
               </pre>
-              <div @click="onCopy">
+              <button class="bg-transparent border-0" @click="onCopy">
                 <svg v-if="usage.length" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-copy"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
-              </div>
+              </button>
             </div>
 
             <div v-if="nb.length">
-              <p class="h5 mb-2">Note</p>
+              <p class="h5 mb-2">Nota</p>
+             
               <div class="snippet-code snippet-2">
                 <pre class="d-flex text-wrap m-0">
-                  
-                  <vue-typer :text="nb" :repeat='0' />
+                   <Typist :words="nb" />
                 </pre>
               </div>
             </div>
@@ -89,7 +90,6 @@
 </template>
 <script>
 
-import { VueTyper } from "vue-typer";
 import NavBar from "./components/NavBar.vue";
 
 import {
@@ -101,9 +101,10 @@ import {
   optionsThirdEN,
 } from "./data";
 
+import Typist from "./components/Typist.vue";
 
 export default {
-  components: {  VueTyper, NavBar },
+  components: {NavBar, Typist },
   name: "App",
   data() {
     return {
@@ -116,15 +117,23 @@ export default {
       selectedThird: "",
       showSecond: false,
       showThird: false,
-      usage: [],
-      nb: [],
+      usage: '',
+      nb: '',
     };
   },
   created() {
     this.translate();
+    this.change();
   },
 
   methods: {
+    change () { 
+
+      setTimeout(() => {
+        this.stringWord = 'hela de la mismo';
+      }, 4000);
+    
+    },
     translate() {
       this.locale = 'es'
       //this.locale = window.navigator.languages[1];
@@ -137,8 +146,8 @@ export default {
 
     onFirstChange(selected) {
       if (this.optionsSecond[selected.value]) {
-        this.usage = [];
-        this.nb = [];
+        this.usage = '';
+        this.nb = '';
         this.showSecond = true;
         this.showThird = false;
         this.selectedSecond = "";
@@ -154,11 +163,11 @@ export default {
         this.nb = selected.nb;
       } else if (this.optionsThird[selected.value]) {
         this.showThird = true;
-        this.usage = [];
-        this.nb = [];
+        this.usage = '';
+        this.nb = '';
       } else {
         this.usage = selected.usage;
-        this.nb = [];
+        this.nb = '';
       }
     },
 
@@ -168,7 +177,7 @@ export default {
         this.nb = selected.nb;
       } else {
         this.usage = selected.usage;
-        this.nb = [];
+        this.nb = '';
       }
     },
 
@@ -217,17 +226,5 @@ export default {
   transition: 0.3s background cubic-bezier(0.175, 0.885, 0.32, 1.275); 
 }
 
-/* Typer styles*/
 
-.vue-typer .custom.char {
-  color: #fff;
-}
-
-.vs__dropdown-toggle {
-  border: none;
-
-}
-.vue-typer .custom.caret {
-  display: none;
-}
 </style>

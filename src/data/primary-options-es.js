@@ -1,7 +1,7 @@
 const options = [
   { value: 'ver', label: 'ver/mostrar' },
   { value: 'agregar', label: 'agregar' },
-  { value: 'ordenar', label: 'ordenar' },
+  { value: 'filtrar', label: 'filtrar' },
 ];
 
 export const primaryOptions = options.sort((x, y) => {
