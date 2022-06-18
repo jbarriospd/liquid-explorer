@@ -80,7 +80,8 @@ export const secondaryOptions = {
     {
       value: 'entry-paginate',
       label: 'entrada',
-      usage: "{% assign entries = spaces['space_uid'].types['type_uid'].entries | paginated: 10 %}\n<ul>\n{% for entry in entries %}\n<li>{{ entry.meta.slug }}</li>\n{% endfor %}\n</ul>\n{{ entries | pagination_links }}"
+      usage: "{% assign entries = spaces['space_uid'].types['type_uid'].entries | paginated: 10 %}\n<ul>\n{% for entry in entries %}\n<li>{{ entry.meta.slug }}</li>\n{% endfor %}\n</ul>\n{{ entries | pagination_links }}",
+      nb: "En el caso anterior, se paginará el listado de entradas con 10 elementos por página y al final del listado aparecerán los links de la paginación. Puedes navegar por cada página usando el parámetro GET page en la URL, por ejemplo mi-pagina.com/landing?page=2."
 
     },
 
