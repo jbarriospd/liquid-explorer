@@ -1,7 +1,7 @@
 <template>
   <section id="app" class="bg-light">
     <div id="home" class="home d-flex flex-column justify-content-between">
-        <NavBar />
+      <NavBar />
       <div class="container wrapper flex-grow-1">
         <div class="row">
           <div class="col-md-4">
@@ -16,7 +16,7 @@
               }}
             </p>
             <div class="">
-             <p>{{ locale == 'en' ? ' I want to:' : 'Quiero:' }}</p>
+              <p>{{ locale == "en" ? " I want to:" : "Quiero:" }}</p>
               <v-select
                 class="rounded-3 shadow-sm p-2"
                 placeholder="..."
@@ -58,24 +58,39 @@
 
           <div class="col-md-7 offset-md-1">
             <p class="h5 mb-2">Snippet</p>
-           
 
-            <div class="d-flex justify-content-between snippet-code snippet-1 mb-5">
-              <pre class="d-flex text-wrap m-0">
-                 <Typist :words="usage"/>
-              </pre>
+            <div
+              class="d-flex justify-content-between align-items-center snippet-code snippet-1 mb-5"
+            >
+              <Typist :words="usage"/>
+
               <button class="bg-transparent border-0" @click="onCopy">
-                <svg v-if="usage.length" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-copy"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                <svg
+                  v-if="usage.length"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#fff"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="feather feather-copy"
+                >
+                  <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                  <path
+                    d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"
+                  ></path>
+                </svg>
               </button>
             </div>
 
             <div v-if="nb.length">
               <p class="h5 mb-2">Nota</p>
-             
+
               <div class="snippet-code snippet-2">
-                <pre class="d-flex text-wrap m-0">
-                   <Typist :words="nb" />
-                </pre>
+                <Typist :words="nb" />
               </div>
             </div>
           </div>
@@ -89,7 +104,6 @@
   </section>
 </template>
 <script>
-
 import NavBar from "./components/NavBar.vue";
 
 import {
@@ -104,7 +118,7 @@ import {
 import Typist from "./components/Typist.vue";
 
 export default {
-  components: {NavBar, Typist },
+  components: { NavBar, Typist },
   name: "App",
   data() {
     return {
@@ -117,8 +131,8 @@ export default {
       selectedThird: "",
       showSecond: false,
       showThird: false,
-      usage: '',
-      nb: '',
+      usage: "",
+      nb: "",
     };
   },
   created() {
@@ -127,27 +141,25 @@ export default {
   },
 
   methods: {
-    change () { 
-
+    change() {
       setTimeout(() => {
-        this.stringWord = 'hela de la mismo';
+        this.stringWord = "hela de la mismo";
       }, 4000);
-    
     },
     translate() {
-      this.locale = 'es'
+      this.locale = "es";
       //this.locale = window.navigator.languages[1];
       // window.location.href = `/${this.locale}`
       this.optionsFirst = this.locale == "en" ? optionsFirstEN : optionsFirstES;
-      this.optionsSecond = this.locale == "en" ? optionsSecondaryEN : optionsSecondaryES;
+      this.optionsSecond =
+        this.locale == "en" ? optionsSecondaryEN : optionsSecondaryES;
       this.optionsThird = this.locale == "en" ? optionsThirdEN : optionsThirdES;
-
     },
 
     onFirstChange(selected) {
       if (this.optionsSecond[selected.value]) {
-        this.usage = '';
-        this.nb = '';
+        this.usage = "";
+        this.nb = "";
         this.showSecond = true;
         this.showThird = false;
         this.selectedSecond = "";
@@ -163,11 +175,11 @@ export default {
         this.nb = selected.nb;
       } else if (this.optionsThird[selected.value]) {
         this.showThird = true;
-        this.usage = '';
-        this.nb = '';
+        this.usage = "";
+        this.nb = "";
       } else {
         this.usage = selected.usage;
-        this.nb = '';
+        this.nb = "";
       }
     },
 
@@ -177,17 +189,16 @@ export default {
         this.nb = selected.nb;
       } else {
         this.usage = selected.usage;
-        this.nb = '';
+        this.nb = "";
       }
     },
 
-    onCopy () {
+    onCopy() {
       const selected = this.usage;
       navigator.clipboard.writeText(selected).then(() => {
         console.log("Copied to clipboard");
       });
-    }
-
+    },
   },
 };
 </script>
@@ -217,14 +228,11 @@ export default {
   border: none;
 }
 
-
 .snippet-code {
   background: #292c33;
   border-radius: 1rem;
   border-left: 0.9rem solid #3dc681;
   padding: 2rem;
-  transition: 0.3s background cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+  transition: 0.3s background cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
-
-
 </style>

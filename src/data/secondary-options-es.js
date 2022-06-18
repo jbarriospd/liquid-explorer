@@ -34,7 +34,13 @@ export const secondaryOptions = {
       label: 'entradas',
       usage: "{% assign entries = spaces['space_uid'].types['type_uid'].entries %}",
       nb: 'Tag para mostrar entradas de un espacio,'
+    },
+    {
+      value: 'entries-count',
+      label: 'cantidad de entradas',
+      usage: "{{ entries | total_entries }}",
     }
+
 
     
   ],
@@ -50,13 +56,33 @@ export const secondaryOptions = {
 
   filtrar: [
     {
-      value: 'entry',
+      value: 'entry-filter',
       label: 'entrada',
     },
+  
+  ],
+
+  ordernar : [
     {
-      value: 'array',
-      label: 'array',
-    }
+      value: 'entry-order',
+      label: 'entrada'
+    },
+  ],
+
+  limitar : [
+    {
+      value: 'entry-limit',
+      label: 'entrada'
+    },
+  ],
+
+  paginar : [
+    {
+      value: 'entry-paginate',
+      label: 'entrada',
+      usage: "{% assign entries = spaces['space_uid'].types['type_uid'].entries | paginated: 10 %}\n<ul>\n{% for entry in entries %}\n<li>{{ entry.meta.slug }}</li>\n{% endfor %}\n</ul>\n{{ entries | pagination_links }}"
+
+    },
 
   ]
   
