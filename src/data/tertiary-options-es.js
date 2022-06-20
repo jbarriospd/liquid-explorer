@@ -14,8 +14,8 @@ export const tertiaryOptions = {
     {
       value: 'entry-author',
       label: 'por campo',
-      usage: "| filter_by: field: 'field_name', eq: 'value_to_filter'",
-      nb: "Si quieres negar un valor dentro del filtro de campos, puedes usar not dentro del filtro: | filter_by: field: 'field_name', not: nil "
+      usage: "| filter_by: field: '<<nombre_campo>>', eq: <<valor>>",
+      nb: "Si quieres negar un valor dentro del filtro de campos, puedes usar not: | filter_by: field: 'field_name', not: <<valor>>"
     },
     
     {

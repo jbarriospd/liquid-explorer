@@ -60,9 +60,15 @@
             <p class="h5 mb-2">Snippet</p>
 
             <div
-              class="d-flex justify-content-between align-items-center snippet-code snippet-1 mb-5"
+              class="
+                d-flex
+                justify-content-between
+                align-items-center
+                snippet-code snippet-1
+                mb-5
+              "
             >
-              <Typist :words="usage"/>
+              <Typist :words="usage" />
 
               <button class="bg-transparent border-0" @click="onCopy">
                 <svg
@@ -137,15 +143,9 @@ export default {
   },
   created() {
     this.translate();
-    this.change();
   },
 
   methods: {
-    change() {
-      setTimeout(() => {
-        this.stringWord = "hela de la mismo";
-      }, 4000);
-    },
     translate() {
       this.locale = "es";
       //this.locale = window.navigator.languages[1];
@@ -196,7 +196,7 @@ export default {
     onCopy() {
       const selected = this.usage;
       navigator.clipboard.writeText(selected).then(() => {
-        console.log("Copied to clipboard");
+        
       });
     },
   },

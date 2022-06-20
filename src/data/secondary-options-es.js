@@ -40,18 +40,33 @@ export const secondaryOptions = {
       label: 'cantidad de entradas',
       usage: "{{ entries | total_entries }}",
     }
-
-
-    
   ],
-
+  extraer: [
+    {
+      value: 'entry-field',
+      label: 'campo',
+      usage: "{{ entry.<<meta | fields>>.<<nombre-de-campo>> }}",
+      nb: "Tambien es valido {{ entry['<<nombre_campo>>'] }}"
+    },
+    {
+      value: 'entry-image',
+      label: 'imagen',
+      usage: "{{ entry.fields.['Imagen'].url }}",
+      nb: "Tambien es valido {{ entry.['Imagen'].url }}"
+    },
+    {
+      value: 'entry-image-alt',
+      label: 'alt de la imagen',
+      usage: "{{ entry.fields.['Imagen'].alt_text }}",
+      nb: "Tambien es valido {{ entry.['Imagen'].alt_text }}"
+    }
+  ],
   agregar: [
     {
       value: 'comment',
       label: 'comentario',
       usage: '{% comment %} in losses {% endcomment %}'
     }
-
   ],
 
   filtrar: [
@@ -62,7 +77,7 @@ export const secondaryOptions = {
   
   ],
 
-  ordernar : [
+  ordenar : [
     {
       value: 'entry-order',
       label: 'entrada'
