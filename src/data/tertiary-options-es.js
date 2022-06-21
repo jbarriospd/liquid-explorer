@@ -17,7 +17,7 @@ export const tertiaryOptions = {
       usage: "| filter_by: field: '<<nombre_campo>>', eq: <<valor>>",
       nb: "Si quieres negar un valor dentro del filtro de campos, puedes usar not: | filter_by: field: 'field_name', not: <<valor>>"
     },
-    
+
     {
       value: 'date',
       label: 'por fecha (año, mes, dia)',
@@ -34,7 +34,7 @@ export const tertiaryOptions = {
       usage: "| limit: <<cantidad>>",
     },
   ],
-  'entry-order' : [
+  'entry-order': [
     {
       value: 'entry-asc',
       label: 'Por ascendente',
@@ -46,5 +46,13 @@ export const tertiaryOptions = {
       usage: "| sort_by: 'fields.<<nombre-de-campo>>', 'desc'",
     },
   ],
+  'entry-nested': [
+    {
+      value: 'entry-nested-first',
+      label: 'Primera iteracion',
+      usage: "{% if forloop.first %} First time through! {% else %} Not the first time. {% endif %} ",
+      nb: 'Dentro de un for, retorna la primera iteracion ex: <li class="{% if forloop.first %}show{% endif %} nav-link">, en este caso el primer li tendra la clase show'
+    },
+  ]
 
 }

@@ -1,9 +1,6 @@
 <template>
   <div id="app">
-    <div class="container">
-      <div class="row">
-      </div>
-    </div>
+   <!--  <ToogleSwitch /> -->
   </div>
 </template>
 
@@ -11,6 +8,7 @@
 
 export default {
   name: 'nav-bar',
+  
 
 }
 </script>

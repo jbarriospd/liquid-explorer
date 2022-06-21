@@ -1,12 +1,11 @@
 import Vue from 'vue'
 import App from './App.vue'
+import "./main.css";
+import "./minimal.css";
 
 //import {i18n} from './i18n'
 
-
-import "./main.css";
 import 'vue-select/dist/vue-select.css';
-
 import vSelect from "vue-select";
 
 Vue.config.productionTip = false

@@ -1,12 +1,13 @@
 <template>
   <section id="app" class="bg-light">
-    <div id="home" class="home d-flex flex-column justify-content-between">
-      <NavBar />
+   
+    <div id="home" class="home d-flex flex-column justify-content-between p-4 p-lg-0">
       <div class="container wrapper flex-grow-1">
+         <nav-bar />
         <div class="row">
           <div class="col-md-4">
-            <h1 class="h2">
-              Liquid <span class="text-green-brand">Command</span> Explorer
+            <h1 class="h2 fw-bold">
+              Liquid <span class="text-green-grad">Command</span> Explorer
             </h1>
             <p class="mb-5">
               {{
@@ -16,7 +17,7 @@
               }}
             </p>
             <div class="">
-              <p>{{ locale == "en" ? " I want to:" : "Quiero:" }}</p>
+              <p class="text-green-grad fw-bold">{{ locale == "en" ? " I want to:" : "Quiero:" }}</p>
               <v-select
                 class="rounded-3 shadow-sm p-2"
                 placeholder="..."
@@ -56,7 +57,7 @@
             </div>
           </div>
 
-          <div class="col-md-7 offset-md-1">
+          <div class="col-md-7 offset-md-1 mb-5  mb-lg-0">
             <p class="h5 mb-2">Snippet</p>
 
             <div
@@ -212,14 +213,15 @@ export default {
   padding-top: 10rem;
 }
 
-.text-green-brand {
-  color: #3dc681;
+.text-green-grad {
+   background: -webkit-linear-gradient(#3dc681, #36bc18);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 /* selects */
 
 .v-select.vs--single.vs--searchable {
-  width: 90%;
   margin-bottom: 1.5rem;
   background: #fff;
 }

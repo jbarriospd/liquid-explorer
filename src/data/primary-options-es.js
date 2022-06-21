@@ -4,7 +4,8 @@ const options = [
   { value: 'filtrar', label: 'filtrar' },
   { value: 'paginar', label: 'paginar' },
   { value: 'ordenar', label: 'ordenar' },
-  { value: 'extraer', label: 'extraer' },
+  { value: 'obtener', label: 'obtener' },
+  { value: 'iteración', label: 'iteración' },
 ];
 
 export const primaryOptions = options.sort((x, y) => {
