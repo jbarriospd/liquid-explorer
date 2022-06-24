@@ -1,9 +1,11 @@
 <template>
-  <div class="container">
-    <label class="switch"
-      ><input type="checkbox" v-model='checked' @change="check()" />
+  <div class="d-flex">
+    <p class="me-2">Normal type speed</p>
+    <label class="switch">
+      <input type="checkbox" v-model="checked" @change="check()" />
       <div></div>
     </label>
+    <p class="ms-2">Fast type speed</p>
   </div>
 </template>
 
@@ -12,14 +14,22 @@ export default {
   name: "toogle-switch",
   data() {
     return {
-      checked: false
+      checked: null,
     };
-  },  
-
+  },
+  created () {
+    this.init();
+  
+  },
   methods: {
-    check() {
-      console.log(this.checked);
+    init() {
+      this.checked = JSON.parse(localStorage.getItem('fastType')) || false;
     },
+    check() {
+        localStorage.setItem('fastType', this.checked);
+        this.$emit('myEvent', this.checked);
+      }
+    
   },
 };
 </script>

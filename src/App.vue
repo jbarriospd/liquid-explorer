@@ -1,9 +1,17 @@
 <template>
-  <section id="app" class="bg-light">
-   
-    <div id="home" class="home d-flex flex-column justify-content-between p-4 p-lg-0">
+  <section id="app" class="bg-light p-5">
+    <div
+      id="home"
+      class="home d-flex flex-column justify-content-between p-4 p-lg-0"
+    >
+    <div class="container">
+      <div class="row">
+         <toggle-switch @myEvent="change" />
+      </div>
+    </div>
+      
       <div class="container wrapper flex-grow-1">
-         <nav-bar />
+       
         <div class="row">
           <div class="col-md-4">
             <h1 class="h2 fw-bold">
@@ -17,7 +25,9 @@
               }}
             </p>
             <div class="">
-              <p class="text-green-grad fw-bold">{{ locale == "en" ? " I want to:" : "Quiero:" }}</p>
+              <p class="text-green-grad fw-bold">
+                {{ locale == "en" ? " I want to:" : "Quiero:" }}
+              </p>
               <v-select
                 class="rounded-3 shadow-sm p-2"
                 placeholder="..."
@@ -57,7 +67,7 @@
             </div>
           </div>
 
-          <div class="col-md-7 offset-md-1 mb-5  mb-lg-0">
+          <div class="col-md-7 offset-md-1 mb-5 mb-lg-0">
             <p class="h5 mb-2">Snippet</p>
 
             <div
@@ -69,7 +79,7 @@
                 mb-5
               "
             >
-              <Typist :words="usage" />
+              <Typist :words="usage" :typeInterval="avgTypingDelay" />
 
               <button class="bg-transparent border-0" @click="onCopy">
                 <svg
@@ -97,7 +107,7 @@
               <p class="h5 mb-2">Nota</p>
 
               <div class="snippet-code snippet-2">
-                <Typist :words="nb" />
+                <Typist :words="nb" :typeInterval="avgTypingDelay" />
               </div>
             </div>
           </div>
@@ -110,9 +120,8 @@
     </div>
   </section>
 </template>
-<script>
-import NavBar from "./components/NavBar.vue";
 
+<script>
 import {
   optionsFirstES,
   optionsFirstEN,
@@ -123,9 +132,10 @@ import {
 } from "./data";
 
 import Typist from "./components/Typist.vue";
+import ToggleSwitch from "./components/ToggleSwitch.vue";
 
 export default {
-  components: { NavBar, Typist },
+  components: { Typist, ToggleSwitch },
   name: "App",
   data() {
     return {
@@ -140,14 +150,16 @@ export default {
       showThird: false,
       usage: "",
       nb: "",
+      fastType: null,
+      avgTypingDelay: 0,
     };
   },
   created() {
-    this.translate();
+    this.init();
   },
 
   methods: {
-    translate() {
+    init() {
       this.locale = "es";
       //this.locale = window.navigator.languages[1];
       // window.location.href = `/${this.locale}`
@@ -155,6 +167,9 @@ export default {
       this.optionsSecond =
         this.locale == "en" ? optionsSecondaryEN : optionsSecondaryES;
       this.optionsThird = this.locale == "en" ? optionsThirdEN : optionsThirdES;
+
+      this.fastType = JSON.parse(localStorage.getItem("fastType"));
+      this.change(this.fastType);
     },
 
     onFirstChange(selected) {
@@ -170,7 +185,6 @@ export default {
     onSecondChange(selected) {
       this.showThird = false;
       this.selectedThird = "";
-
       if (selected.nb) {
         this.usage = selected.usage;
         this.nb = selected.nb;
@@ -183,7 +197,6 @@ export default {
         this.nb = "";
       }
     },
-
     onThirdChange(selected) {
       if (selected.nb) {
         this.usage = selected.usage;
@@ -193,12 +206,13 @@ export default {
         this.nb = "";
       }
     },
-
     onCopy() {
       const selected = this.usage;
-      navigator.clipboard.writeText(selected).then(() => {
-        
-      });
+      navigator.clipboard.writeText(selected).then(() => {});
+    },
+    change(val) {
+      this.fastType = val;
+      this.avgTypingDelay = this.fastType ? 10 : 50;
     },
   },
 };
@@ -214,7 +228,7 @@ export default {
 }
 
 .text-green-grad {
-   background: -webkit-linear-gradient(#3dc681, #36bc18);
+  background: -webkit-linear-gradient(#3dc681, #36bc18);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }

@@ -1,5 +1,5 @@
 <template v-code>
-  <pre class="d-flex m-0 font-weight-bold fs-6 text-white m-0">
+  <pre class="d-flex m-0 font-weight-bold fs-6 text-white overflow-auto m-0">
       <code class="typer">{{ text }}</code>
   </pre>
 </template>
