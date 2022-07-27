@@ -6,6 +6,7 @@ const options = [
   { value: 'ordenar', label: 'ordenar' },
   { value: 'obtener', label: 'obtener' },
   { value: 'iteracion', label: 'iteración' },
+  { value: 'remove', label: 'remover' },
 ];
 
 export const primaryOptions = options.sort((x, y) => {

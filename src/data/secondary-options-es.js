@@ -13,16 +13,10 @@ export const secondaryOptions = {
       nb: 'Taq para mostrar la url base del sitio, incluido el canal actual'
     },
     {
-      value: '404',
-      label: 'Mensaje de error 404',
-      usage: "{{ 'site.errors.not_found' | translate }}",
-      nb: 'Taq para mostrar 404 segun idioma del sitio'
-    },
-    {
       value: 'domain',
       label: 'dominio',
       usage: "{{ request.host }}",
-      nb: 'taq para mostrar el dominio actual ex: my-site.com'
+      nb: 'taq para mostrar el dominio actual ej: my-site.com'
     },
     {
       value: 'page-nombre',
@@ -32,8 +26,7 @@ export const secondaryOptions = {
     {
       value: 'entries',
       label: 'entradas',
-      usage: "{% assign entries = spaces['space_uid'].types['type_uid'].entries %}",
-      nb: 'Tag para mostrar entradas de un espacio,'
+      usage: "{% assign entries = spaces['space_uid'].types['type_uid'].entries %}"
     },
     {
       value: 'entries-count',
@@ -45,26 +38,26 @@ export const secondaryOptions = {
     {
       value: 'entry-field',
       label: 'campo',
-      usage: "{{ entry.<<meta | fields>>.<<nombre-de-campo>> }}",
-      nb: "Tambien es valido {{ entry['<<nombre_campo>>'] }}"
+      usage: "{{ entry.<meta | fields>.<nombre_campo> }}",
+      nb: "También es válido {{ entry['<<nombre_campo>>'] }}"
     },
     {
       value: 'entry-image',
       label: 'imagen',
       usage: "{{ entry.fields.['Imagen'].url }}",
-      nb: "Tambien es valido {{ entry.['Imagen'].url }}"
+      nb: "También es válido {{ entry.['Imagen'].url }}"
     },
     {
       value: 'entry-image-alt',
       label: 'alt de la imagen',
       usage: "{{ entry.fields.['Imagen'].alt_text }}",
-      nb: "Tambien es valido {{ entry.['Imagen'].alt_text }}"
+      nb: "También es válido {{ entry.['Imagen'].alt_text }}"
     },
     {
       value: 'site-tree-cvategories',
       label: 'Arbol de categorias del sitio',
       usage: "{{ spaces['pruebas'].categories | json }}",
-      nb: 'el resultado sería ex: [{"id":3952,"slug":"movies","name":"Movies","url":"/movies","parent":null},{"id":4442,"slug":"estaciones","name":"Estaciones","url":"/estaciones","parent":null}]'
+      nb: 'el resultado sería ej: [{"id":3952,"slug":"movies","name":"Movies","url":"/movies","parent":null},{"id":4442,"slug":"estaciones","name":"Estaciones","url":"/estaciones","parent":null}]'
     }
   ],
   agregar: [
@@ -113,6 +106,14 @@ export const secondaryOptions = {
       value: 'entry-nested',
       label: 'anidado'
     }
-  ]    
+  ],
+  
+  remove: [
+    { 
+    value: "accents",
+    label: "acentos",
+    usage: "| replace: 'á', 'a' | replace: 'é', 'e'  | replace: 'í', 'i'  | replace: 'ó', 'o'  | replace: 'ú', 'u' %}"
+    }
+  ]
   
 };
