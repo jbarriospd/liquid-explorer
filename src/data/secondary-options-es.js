@@ -65,6 +65,14 @@ export const secondaryOptions = {
       value: 'comment',
       label: 'comentario',
       usage: '{% comment %} texto comentado {% endcomment %}'
+    },
+  ],
+
+  asignar : [
+    {
+      value: 'var',
+      label: 'variable',
+      usage: '{% assign my_variable = "tomato" %}\n{{ my_variable }}'
     }
   ],
 

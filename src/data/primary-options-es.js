@@ -1,6 +1,7 @@
 const options = [
   { value: 'ver', label: 'ver/mostrar' },
   { value: 'agregar', label: 'agregar' },
+  { value: 'asignar', label: 'asignar' },
   { value: 'filtrar', label: 'filtrar' },
   { value: 'paginar', label: 'paginar' },
   { value: 'ordenar', label: 'ordenar' },
