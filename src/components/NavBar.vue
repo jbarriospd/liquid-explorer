@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <ToogleSwitch :fastType="onTyped"/>
+    <toogle-switch :fastType="onTyped" />
   </div>
 </template>
 
@@ -12,22 +12,18 @@ export default {
   props: {
     onTyped: {
       type: Boolean,
-      default:false
-    }
+      default: false,
+    },
   },
   components: {
-    ToogleSwitch
+    ToogleSwitch,
   },
   methods: {
     check() {
       console.log(this.onTyped);
     },
   },
-}
-
+};
 </script>
 
-
-<style scoped>
-  
-</style>
+<style scoped></style>

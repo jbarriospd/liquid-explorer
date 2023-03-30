@@ -11,25 +11,23 @@
 
 <script>
 export default {
-  name: "toogle-switch",
+  name: 'toogle-switch',
   data() {
     return {
       checked: null,
     };
   },
-  created () {
+  created() {
     this.init();
-  
   },
   methods: {
     init() {
       this.checked = JSON.parse(localStorage.getItem('fastType')) || false;
     },
     check() {
-        localStorage.setItem('fastType', this.checked);
-        this.$emit('myEvent', this.checked);
-      }
-    
+      localStorage.setItem('fastType', this.checked);
+      this.$emit('myEvent', this.checked);
+    },
   },
 };
 </script>

@@ -6,7 +6,7 @@
 
 <script>
 export default {
-  name: "typist",
+  name: 'typist',
 
   props: {
     typeInterval: {
@@ -23,7 +23,7 @@ export default {
 
   data() {
     return {
-      text: "",
+      text: '',
       index: 0,
     };
   },
@@ -48,7 +48,7 @@ export default {
       }
     },
     reset() {
-      this.text = "";
+      this.text = '';
       this.index = 0;
       this.addLetter();
     },
@@ -78,5 +78,7 @@ export default {
 </script>
 
 <style scoped>
-.typer {white-space: pre-line;}
+.typer {
+  white-space: pre-line;
+}
 </style>
