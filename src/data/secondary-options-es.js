@@ -44,14 +44,14 @@ export const secondaryOptions = {
     {
       value: 'entry-image',
       label: 'imagen',
-      usage: "{{ entry.fields.['Imagen'].url }}",
-      nb: "También es válido {{ entry.['Imagen'].url }}"
+      usage: "{{ entry.fields['Imagen'].url }}",
+      nb: "También es válido {{ entry['Imagen'].url }}"
     },
     {
       value: 'entry-image-alt',
       label: 'alt de la imagen',
-      usage: "{{ entry.fields.['Imagen'].alt_text }}",
-      nb: "También es válido {{ entry.['Imagen'].alt_text }}"
+      usage: "{{ entry.fields['Imagen'].alt_text }}",
+      nb: "También es válido {{ entry['Imagen'].alt_text }}"
     },
     {
       value: 'site-tree-cvategories',
