@@ -114,7 +114,8 @@
         </div>
       </div>
       <footer class="d-flex justify-content-around">
-        <p class="text-center">Made with <span>💚</span></p>
+        <div class="text-center">Made with <span>💚</span><a href="https://github.com/jbarriospd" target="_blank">Jose Barrios</a></div>
+        
         <p>Based on Gitexplorer</p>
       </footer>
     </div>
