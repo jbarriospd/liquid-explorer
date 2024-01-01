@@ -4,14 +4,13 @@
       id="home"
       class="home d-flex flex-column justify-content-between p-4 p-lg-0"
     >
-    <div class="container">
-      <div class="row">
-         <toggle-switch @myEvent="change" />
+      <div class="container">
+        <div class="row">
+          <toggle-switch @myEvent="change" />
+        </div>
       </div>
-    </div>
-      
+
       <div class="container wrapper flex-grow-1">
-       
         <div class="row">
           <div class="col-md-4">
             <h1 class="h2 fw-bold">
@@ -71,13 +70,7 @@
             <p class="h5 mb-2">Snippet</p>
 
             <div
-              class="
-                d-flex
-                justify-content-between
-                align-items-center
-                snippet-code snippet-1
-                mb-5
-              "
+              class="d-flex justify-content-between align-items-center snippet-code snippet-1 mb-5"
             >
               <Typist :words="usage" :typeInterval="avgTypingDelay" />
 
@@ -100,6 +93,7 @@
                     d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"
                   ></path>
                 </svg>
+                <div class="tooltip-copy" role="tooltip">{{ msgTooltip }}</div>
               </button>
             </div>
 
@@ -114,8 +108,13 @@
         </div>
       </div>
       <footer class="d-flex justify-content-around">
-        <div class="text-center">Made with <span>💚</span><a href="https://github.com/jbarriospd" target="_blank">Jose Barrios</a></div>
-        
+        <div class="text-center">
+          Made with <span>💚</span
+          ><a href="https://github.com/jbarriospd" target="_blank"
+            >Jose Barrios</a
+          >
+        </div>
+
         <p>Based on Gitexplorer</p>
       </footer>
     </div>
@@ -153,6 +152,7 @@ export default {
       nb: "",
       fastType: null,
       avgTypingDelay: 0,
+      msgTooltip: "Copiar"
     };
   },
   created() {
@@ -209,7 +209,13 @@ export default {
     },
     onCopy() {
       const selected = this.usage;
-      navigator.clipboard.writeText(selected).then(() => {});
+      navigator.clipboard.writeText(selected).then(() => {
+        this.msgTooltip = "Copiado";
+        setTimeout(() => {
+          this.msgTooltip = "Copiar";
+        }, 2000);
+      });
+      window.umami.track(`${this.selectedFirst.label} ${this.selectedSecond.label} ${this.selectedThird ? this.selectedThird.label : '' }`);
     },
     change(val) {
       this.fastType = val;
@@ -251,5 +257,35 @@ export default {
   border-left: 0.9rem solid #3dc681;
   padding: 2rem;
   transition: 0.3s background cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* tooltip */
+
+.tooltip-copy {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  user-select: none;
+
+  background-color: #000;
+  box-shadow: 0 0 10px #000;
+  padding: 0.5rem 1rem;
+  font-size: 0.8rem;
+  color: #fff;
+  border-radius: 8px;
+
+  top: 100%;
+  left: 12.5px;
+
+  opacity: 0;
+  transition: opacity .3s ease;
+}
+
+:has(> .tooltip-copy) {
+  position: relative;
+}
+
+:has(> .tooltip-copy):hover .tooltip-copy {
+  opacity: 1;
 }
 </style>
