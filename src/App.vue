@@ -1,5 +1,5 @@
 <template>
-  <section id="app" class="bg-light p-5">
+  <section id="app">
     <div
       id="home"
       class="home d-flex flex-column justify-content-between p-4 p-lg-0"
@@ -10,7 +10,7 @@
         </div>
       </div>
 
-      <div class="container wrapper flex-grow-1">
+      <div class="container">
         <div class="row">
           <div class="col-md-4">
             <h1 class="h2 fw-bold">
@@ -215,7 +215,8 @@ export default {
           this.msgTooltip = "Copiar";
         }, 2000);
       });
-      window.umami.track(`${this.selectedFirst.label} ${this.selectedSecond.label} ${this.selectedThird ? this.selectedThird.label : '' }`);
+      const queryString = `${this.selectedFirst.label} ${this.selectedSecond.label} ${this.selectedThird ? this.selectedThird.label : ''}`;
+      window.umami.track(queryString.trim());
     },
     change(val) {
       this.fastType = val;
@@ -228,10 +229,6 @@ export default {
 <style>
 .home {
   height: 100vh;
-}
-
-.home .wrapper {
-  padding-top: 10rem;
 }
 
 .text-green-grad {

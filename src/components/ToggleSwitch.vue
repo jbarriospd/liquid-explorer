@@ -1,11 +1,11 @@
 <template>
-  <div class="d-flex">
-    <p class="me-2">Normal type speed</p>
+  <div class="d-flex pt-2 pb-4 pt-md-5 pb-md-0">
+    <p class="me-2 p-0">Normal type speed</p>
     <label class="switch">
       <input type="checkbox" v-model="checked" @change="check()" />
       <div></div>
     </label>
-    <p class="ms-2">Fast type speed</p>
+    <p class="ms-2 p-0">Fast type speed</p>
   </div>
 </template>
 
